@@ -57,6 +57,11 @@ typedef struct		s_win
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	void		*img;
+	char		*data;
+	int		bpp;
+	int		width;
+	int		endian;
 	double		s_x;
 	double		s_y;
 	int		**tab;
