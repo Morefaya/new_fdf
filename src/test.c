@@ -6,42 +6,49 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/04 16:59:25 by jcazako           #+#    #+#             */
-/*   Updated: 2016/08/04 20:05:19 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/08/08 17:46:57 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		ft_put_pixel(t_win *win, int i, int j)
+void		put_pixel(t_win *win, int i, int j, int color)
 {
-	unsigned int	place;
-	int		*data_i;
+	unsigned long	place;
+	int				*data_i;
+	unsigned long	range;
 
+	range = X_MAX * Y_MAX;
 	data_i = (int*)win->data;
-	place = j * win->nb_line - (win->nb_col - i);
-	if (place >= X_MAX * Y_MAX)
+	place = j * win->nb_col + i;
+	if (place >= range)
 		return;
-	data_i[place] = BLUE;
+	data_i[place] = color;
 }
 
 void		ft_draw(t_win *win)
 {
-	int	i;
-	int	j;
+	//int	i;
+	//int	j;
+	t_screen	a;
+	t_screen	b;
 
-	i = 0;
+	a.x = 20;
+	a.y = 10;
+	b.x = 14;
+	b.y = 18;
+	/*i = 0;
 	while (i < win->nb_line)
 	{
 		j = 0;
 		while (j < win->nb_col)
 		{
-			ft_put_pixel(win, i, j);
 			j++;
 		}
 		i++;
-	}
+	}*/
+	draw_line(win, a, b);
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img, 0, 0);
-	ft_putendl("image");
 }
 
 int		ft_loop_hook(t_win *win)
@@ -65,12 +72,15 @@ int		ft_loop_hook(t_win *win)
 
 int		ft_mouse(int button, int x, int y, t_win *win)
 {
-	ft_putnbr(button);
+	/*ft_putnbr(button);
 	ft_putchar('\n');
 	ft_putnbr(x);
 	ft_putchar('\t');
 	ft_putnbr(y);
-	ft_putchar('\n');
+	ft_putchar('\n');*/
+	(void)x;
+	(void)y;
+	(void)button;
 	ft_loop_hook(win);
 	return (0);
 }

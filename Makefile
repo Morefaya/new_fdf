@@ -1,6 +1,6 @@
 CC = gcc
 CFLAG = -Wall -Wextra -Werror
-SRC = test.c
+SRC = test.c draw_line.c
 
 #main.c key_event.c draw.c draw_line.c get_pixel.c draw_trandmark.c \
 black_screen.c delete_line.c del_trandmark.c tool.c parse.c

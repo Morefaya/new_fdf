@@ -6,14 +6,21 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 18:27:44 by jcazako           #+#    #+#             */
-/*   Updated: 2016/02/19 17:49:28 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/08/08 18:06:53 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# define BASE_HEX_A "0123456789abcdef"
+# define BASE_HEX_B "0123456789ABCDEF"
+# define BASE_OCT "01234567"
+# define BASE_10 "0123456789"
+
 # include <string.h>
 # include "get_next_line.h"
+
 
 typedef struct		s_list
 {
@@ -91,6 +98,8 @@ int					ft_sqrt(int nb);
 void				ft_putstr_left(char *str, int width);
 void				ft_putstr_right(char *str, int width);
 void				ft_putendstr(char *str, char a);
-int				ft_getnbr(const char *str);
-int				ft_strisnum(const char *str);
+int					ft_getnbr(const char *str);
+int					ft_strisnum(const char *str);
+int					ft_select_charset(char ch, const char *charset);
+int					ft_abs(int a);
 #endif
